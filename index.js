@@ -7,9 +7,6 @@ const apiRoute = require('./apiRoute')
 app.use(bodyParser());
 
 // logger
-router.get('/health', async ctx => {
-  ctx.body = 'OK'
-})
 
 app.use(async (ctx, next) => {
   await next()
