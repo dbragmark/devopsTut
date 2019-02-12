@@ -6,6 +6,9 @@ const apiRoute = require('./apiRoute')
 app.use(bodyParser());
 
 // logger
+router.get('/health', async ctx => {
+  ctx.body = 'OK'
+})
 
 app.use(async (ctx, next) => {
   await next()
@@ -24,7 +27,10 @@ app.use(async (ctx, next) => {
 app.use(apiRoute.routes())
 app.use(apiRoute.allowedMethods())
 
-
-app.listen(3000, () => {
-  console.log('We are now live on port 3000!')
+const port = process.env.port || 3000
+app.listen(port, () => {
+  console.log(`We are now live on port ${port}`)
+})
+//app.listen(3000, () => {
+//  console.log('We are now live on port 3000!')
 })
